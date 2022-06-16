@@ -1,25 +1,64 @@
-import {Form,Button } from 'react-bootstrap'
-
+import { Form, Button } from 'react-bootstrap'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 const FormularioInicioSesion = (props) => {
+    const [dataFormulario, setDataFormulario] = useState({
+        usuario: '',
+        pass: ''
+    });
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
+    const handleOnChange = (e) => {
+        switch (e.target.name) {
+            case 'usuario':
+                setDataFormulario({ ...dataFormulario, usuario: e.target.value })
+                break;
+            case 'pass':
+                setDataFormulario(({ ...dataFormulario, pass: e.target.value }))
+                break;
+            default:
+                break;
+        }
+    }
+    
+
+    const login = () => {
+        fetch("http://localhost:4000/api/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataFormulario)
+        }).then(res => {
+            return { response: res.json(), statusCode: res.status }
+        }).then(res => {
+            const { response, statusCode } = res;
+            setMessage(response.message)
+            if (statusCode == 200) {
+                document.cookie = `token=${response.token}; path=/;samesite=strict`
+                navigate('/home')
+            }
+        }
+        )
+    }
 
     return (
         <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="text" name="usuario" placeholder="Por favor ingrese su nombre de usuario" onChange={(e) => handleOnChange(e)} />
                 <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
+                    {message}
                 </Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Label>Contraseña</Form.Label>
+                <Form.Control type="password" placeholder="Password" name="pass" onChange={(e) => handleOnChange(e)} />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
+
+            <Button variant="primary" type="button" onClick={login}>
                 Enviar
             </Button>
         </Form>
