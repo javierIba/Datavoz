@@ -13,7 +13,7 @@ export default function NavigationBar(){
        <Nav.Link href="#features">Features</Nav.Link>
        <Nav.Link href="#pricing">Pricing</Nav.Link>
      </Nav>
-     <Button variant="secondary" onClick={()=>navigate('/NuevoSup')} >Agregar nuevo supervisor</Button>
+     <Button variant="warning" onClick={()=>navigate('/NuevoSup')} >Agregar nuevo supervisor</Button>
 
 
     </Container>
