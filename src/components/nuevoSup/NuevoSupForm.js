@@ -1,6 +1,8 @@
 import { Form, Button, Container, Card, Alert } from 'react-bootstrap';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 export default function NuevoSupForm() {
+  const navigate = useNavigate()
   const [message, setMessage] = useState('')
   const [dataFormulario, setDataFormulario] = useState({
     usuario: '',
@@ -25,19 +27,25 @@ export default function NuevoSupForm() {
   }
   const handleOnClick = async () => {
     let cookies = document.cookie.split(';');
-    let token = cookies.find(cookie => cookie.includes("token")).replace('token=', '');
+    let token = cookies.find(cookie => cookie.includes("token"))
+  
+    if (!token) {
+      navigate('/')
+    } else {
+      token = token.replace('token=', '');
+      let peticionLogin = await fetch('http://localhost:4000/api/insert', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'token': token
+        },
+        body: JSON.stringify(dataFormulario)
+      });
+      let response = await peticionLogin.json();
 
-    let peticionLogin = await fetch('http://localhost:4000/api/insert', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'token': token
-      },
-      body: JSON.stringify(dataFormulario)
-    });
-    let response = await peticionLogin.json();
+      setMessage(response)
+    }
 
-    setMessage(response)
   }
 
   return (
