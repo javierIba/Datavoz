@@ -33,7 +33,7 @@ const FormularioInicioSesion = (props) => {
             });
         let response = await peticionLogin.json();
         let statusCode = peticionLogin.status;
-        if(statusCode==200){
+        if(statusCode===200){
             document.cookie = `token=${response.token}; path=/;samesite=strict`
             navigate('/home') 
         }
@@ -46,7 +46,7 @@ const FormularioInicioSesion = (props) => {
         <Card.Header className="text-center">Iniciar Sesión</Card.Header>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>Email</Form.Label>
+                    <Form.Label>Email</Form.Label>
                     <Form.Control type="text" name="usuario" placeholder="Por favor ingrese su nombre de usuario" onChange={(e) => handleOnChange(e)} />
                     <Form.Text className="text-muted">
                         {message}
