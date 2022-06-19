@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 export default function NuevoSupForm() {
   const navigate = useNavigate()
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState(null)
   const [dataFormulario, setDataFormulario] = useState({
     usuario: '',
     pass: '',
@@ -90,11 +90,12 @@ export default function NuevoSupForm() {
                 </Form.Text>
               </Form.Group>
             </Form.Group>
-            <h3>{message}</h3>
+            {(message)&&<h3 onClick={()=>navigate('/home')}>{message}</h3>}
+           
 
             <div className="text-center" >
               <Button variant="warning" type="button" onClick={handleOnClick}>
-                Crear Supervisor
+                Registrar usuario
               </Button>
 
             </div>
