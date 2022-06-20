@@ -1,23 +1,31 @@
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button,Card } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import './style/style.css'
 export default function OpcionesHome() {
     const navigate = useNavigate()
     
     return (<>
-        <Container>
+    
+        <Container className="p-5">
             <Row>
-                <Col >
-                    <Button onClick={()=>{navigate('/NuevaEncuesta')}}>crear nueva pauta de encuesta</Button>
+                <Col md={12} sm={12} lg={4} className="p-5" >
+                    <Card>
+                       <Button variant="warning" onClick={()=>{navigate('/NuevaEncuesta')}}>crear nueva pauta de encuesta</Button>
+                    </Card>
                 </Col>
-                <Col>
-                    <Button onClick={()=>{navigate('/NuevoSup')}}>Ingresar nuevo supervisor</Button>
+                <Col md={12} sm={12} lg={4} className="p-5">
+                    <Card>
+                        <Button variant="warning" onClick={()=>{navigate('/NuevoSup')}}>Ingresar nuevo supervisor</Button>
+                    </Card>
                 </Col>
-                <Col>
-                    <Button>Visualizar reporte</Button>
+                <Col md={12} sm={12} lg={4} className="p-5">
+                    <Card>
+                        <Button variant="warning">Visualizar reporte</Button>
+                    </Card>
                 </Col>
             </Row>
         </Container>
+       
     </>
     )
 }

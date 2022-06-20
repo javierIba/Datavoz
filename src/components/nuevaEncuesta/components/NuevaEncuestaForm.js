@@ -35,7 +35,7 @@ export default function NuevaEncuestaForm() {
         let cookies = document.cookie.split(';');
         let token = cookies.find(cookie => cookie.includes("token"))
         if (!token) {
-            navigate('/')
+            navigate('/home')
         } else {
             token = token.replace('token=', '');
             let peticionCrearNuevaEncuesta = await fetch('http://localhost:4000/api/estudio/agregarEstudio', {
@@ -60,7 +60,7 @@ export default function NuevaEncuestaForm() {
     return (<>
 
         <Container className='text-center p-5'>
-            <Card bg="light" border="warning" >
+            <Card bg="light" border="warning">
                 <Card.Header className="text-center">Información del estudio</Card.Header>
 
                 <Form>

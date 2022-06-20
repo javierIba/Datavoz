@@ -23,8 +23,8 @@ export default function NavigationBar() {
 
           <Nav className="me-auto">
             <Nav.Link onClick={() => navigate('/home')} >Inicio</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="#features">Ver Estudios</Nav.Link>
+            <Nav.Link href="#pricing">Ver reportes</Nav.Link>
 
           </Nav>
           <Button variant="warning" onClick={() => navigate('/NuevoSup')} >Registrar nuevo supervisor</Button>
