@@ -13,7 +13,9 @@ export default function NuevaEncuestaForm() {
         metodo: '',
         duracionPromedioEncuesta: '',
         duracionMinima: '',
-        muestraTotal: ''
+        muestraTotal: '',
+        baseDeDatos:false,
+        pautaEncuesta:false
     });
     const [message, setMessage] = useState(null)
     const handleOnChange = (e) => {
