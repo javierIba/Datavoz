@@ -10,6 +10,7 @@ import {
     Route,
     Link
 } from "react-router-dom"
+import EncuestasParams from "./encuestasParams/EncuestasParams";
 
 
 const App = ()=>{
@@ -25,6 +26,7 @@ const App = ()=>{
           <Route exact path ="/NuevoSup" element={<NuevoSup/>}/>
           <Route exact path ="/NuevaEncuesta" element={<NuevaEncuesta/>}/>
           <Route exact path ="/encuestas" element={<Encuestas/>}/>
+          <Route exact path ="/encuestas/:id" element={<EncuestasParams/>}/>
 
           <Route path="*" element={<NotFound/>}  />
         </Routes>
