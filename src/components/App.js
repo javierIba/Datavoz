@@ -11,6 +11,8 @@ import {
     Link
 } from "react-router-dom"
 import EncuestasParams from "./encuestasParams/EncuestasParams";
+import Form from  "./FormDinamico/form";
+import FormularioDinamico from "./FormDinamico/FormDinamico";
 
 
 const App = ()=>{
@@ -27,6 +29,7 @@ const App = ()=>{
           <Route exact path ="/NuevaEncuesta" element={<NuevaEncuesta/>}/>
           <Route exact path ="/encuestas" element={<Encuestas/>}/>
           <Route exact path ="/encuestas/:id" element={<EncuestasParams/>}/>
+          <Route exact path ="/form" element={<FormularioDinamico/>}/>
 
           <Route path="*" element={<NotFound/>}  />
         </Routes>

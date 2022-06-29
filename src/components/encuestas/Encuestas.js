@@ -26,10 +26,7 @@ export default function Encuestas() {
                                 <Card.Body onClick={() => navigate(`/encuestas/${element.codEstudio}`)}>
                                     <Card.Title>Codigo de estudio: {element.codEstudio}</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">Nombre del estudio: {element.codEstudio}</Card.Subtitle>
-                                    <Card.Text>
-                                        <p>  ¿Base de datos vinculada?: {(element.baseDeDatos)?'Si':'No'}</p>
-                                        <p>¿Pauta de encuesta creada?: {(element.pautaEncuesta)?'Si':'No'}</p>
-                                    </Card.Text>
+                                    
                                  
                                 </Card.Body>
                             </Card>

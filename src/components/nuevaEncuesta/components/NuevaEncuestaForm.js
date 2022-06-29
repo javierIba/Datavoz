@@ -31,6 +31,7 @@ export default function NuevaEncuestaForm() {
                                     (name === 'duracionPromedioEncuesta') ? setDataFormulario({ ...dataFormulario, duracionPromedioEncuesta: value }) :
                                         (name === 'duracionMinima') ? setDataFormulario({ ...dataFormulario, duracionMinima: value }) :
                                             (name === 'muestraTotal') ? setDataFormulario({ ...dataFormulario, muestraTotal: value }) :
+                                            (name === 'rutSupervisor') ? setDataFormulario({ ...dataFormulario, rutSupervisor: value }) :
                                                 console.log("no valido");
     }
     const handleOnClick = async () => {
@@ -83,12 +84,20 @@ export default function NuevaEncuestaForm() {
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group className="mb-3" >
+                                <Form.Label>Rut supervisor</Form.Label>
+                                <Form.Control type="text" name="rutSupervisor" placeholder="Por favor ingrese el rut del supervisor" onChange={(e) => handleOnChange(e)} />
+                                <Form.Text className="text-muted">
+
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group className="mb-3" >
                                 <Form.Label>Fecha de inicio del estudio</Form.Label>
                                 <Form.Control type="date" name="fechaInicio" onChange={(e) => handleOnChange(e)} />
                                 <Form.Text className="text-muted">
 
                                 </Form.Text>
                             </Form.Group>
+                            
                             <Form.Group className="mb-3" >
                                 <Form.Label>Fecha de termino del estudio</Form.Label>
                                 <Form.Control type="date" name="fechaTermino" onChange={(e) => handleOnChange(e)} />
