@@ -10,7 +10,7 @@ export default function OpcionesHome() {
             <Row>
                 <Col md={12} sm={12} lg={4} className="p-5" >
                     <Card>
-                       <Button variant="warning" onClick={()=>{navigate('/NuevaEncuesta')}}>crear nueva pauta de encuesta</Button>
+                       <Button variant="warning" onClick={()=>{navigate('/NuevaEncuesta')}}>Crear nuevo estudio</Button>
                     </Card>
                 </Col>
                 <Col md={12} sm={12} lg={4} className="p-5">

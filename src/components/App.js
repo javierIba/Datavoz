@@ -29,7 +29,7 @@ const App = ()=>{
           <Route exact path ="/NuevaEncuesta" element={<NuevaEncuesta/>}/>
           <Route exact path ="/encuestas" element={<Encuestas/>}/>
           <Route exact path ="/encuestas/:id" element={<EncuestasParams/>}/>
-          <Route exact path ="/form" element={<FormularioDinamico/>}/>
+          <Route exact path ="/form/:id" element={<FormularioDinamico/>}/>
 
           <Route path="*" element={<NotFound/>}  />
         </Routes>

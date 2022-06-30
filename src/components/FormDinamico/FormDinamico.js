@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import NavigationBar from "../navbar/NavigationBar"
 let dataFormulario = {}
 export default function FormularioDinamico() {
-
+    const params = useParams();
     const [message,setMessage] = useState({message:''})
     const [formDinamico, setFormDinamico] = useState({
         aMostrar: '',
@@ -75,7 +76,7 @@ export default function FormularioDinamico() {
         let preguntas = [];
         let nombreRespuesta = "";
         for (let i = 0; i < value; i++) {
-            nombreRespuesta = `pregunta${i + 1}`
+            nombreRespuesta = `respuesta${i + 1}`
             preguntas.push(
                 <Form.Group className="mb-3" controlId={nombreRespuesta}>
                     <Form.Label>Ingrese la respuesta</Form.Label>
@@ -148,7 +149,7 @@ export default function FormularioDinamico() {
     }
     async function enviarPreguntas() {
         let data = {
-            codEstudio:'ee',
+            codEstudio:params.id,
             preguntas:formDinamico.data
         }
         let peticionCrearPautaDeEstudio = await fetch('http://localhost:4000/api/estudio/crearPautaEncuesta',{
