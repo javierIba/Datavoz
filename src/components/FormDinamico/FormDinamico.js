@@ -4,7 +4,7 @@ import NavigationBar from "../navbar/NavigationBar"
 let dataFormulario = {}
 export default function FormularioDinamico() {
 
-    // const [data, setData] = useState([])
+    const [message,setMessage] = useState({message:''})
     const [formDinamico, setFormDinamico] = useState({
         aMostrar: '',
         unica: <>
@@ -146,8 +146,22 @@ export default function FormularioDinamico() {
         dataFormulario['tipo'] = tipo;
 
     }
-    function enviarPreguntas() {
+    async function enviarPreguntas() {
+        let data = {
+            codEstudio:'ee',
+            preguntas:formDinamico.data
+        }
+        let peticionCrearPautaDeEstudio = await fetch('http://localhost:4000/api/estudio/crearPautaEncuesta',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        let response = await peticionCrearPautaDeEstudio.json();
 
+        setMessage(response.message)
+        console.log(JSON.stringify(formDinamico.data))
     }
     return (<>
         <NavigationBar />
@@ -178,7 +192,7 @@ export default function FormularioDinamico() {
 
                             {formDinamico.aMostrar}
 
-                            <Button variant="primary" type="button"  id="button1" onClick={guardarDatos}>
+                            <Button variant="primary" type="button" id="button1" onClick={guardarDatos}>
                                 Guardar pregunta
                             </Button>
                         </Form>
